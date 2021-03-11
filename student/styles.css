@@ -8,13 +8,18 @@ th, tr {
 }
 
 .present {
-    color: gray;
+    color: navy;
     font-style: italic;
+    background-color: lightcyan;
 }
 
 .absent {
     color: black;
     font-weight: bold;
+    background-color: tomato;
 }
 
-
+/* hides div while it's empty to speed up display for user */
+[v-cloak] {
+    display: none;
+}
