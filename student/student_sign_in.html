@@ -24,7 +24,6 @@
             </ul>
         </div>
 
-
         <div class="card add-student m-2 p-2">
             <h4 class="card-title">Add new student</h4>
 
@@ -113,8 +112,21 @@
                         this.students.push(student)
                         this.newStudentName = ''
                         this.newStarID = ''
-                    }
 
+                        this.students.sort(function (s1, s2) {
+                            // returns positive if s1 is later (higher) in alphabet/sort order
+                            // returns negative if s1 is earlier (lower) in alphabet/sort order
+                            if (s1.name.toUpperCase() > s2.name.toUpperCase()) { return 1 }
+                            if (s1.name.toUpperCase() < s2.name.toUpperCase()) { return -1 }
+                            if (s1.name.toUpperCase() === s2.name.toUpperCase()) {
+                                // if names are the same, sort by starID instead
+                                // alternately, can return 0
+                                if (s1.starID > s2.starID) { return 1 }
+                                if (s1.starID < s2.starID) { return -1 }
+                            }
+
+                        });
+                    }
                 },
                 arrivedOrLeft(student) {
                     this.lastStudentUpdate = student
